@@ -1,0 +1,183 @@
+/* styles.css
+   CSS Basics & Box Model demonstration
+   - External stylesheet
+   - Clear selectors, comments, and organized sections
+*/
+
+/* ---------- Basic Reset & Box-sizing ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* important: padding & border included in element width/height */
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Root / Body styles ---------- */
+:root {
+  --bg: #f5f7fb;
+  --primary: #2b7cff;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --accent: #ffd166;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background-color: var(--bg);
+  color: #111827;
+  line-height: 1.45;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ---------- Container utility ---------- */
+.container {
+  width: min(1100px, 92%);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- Header & Navigation ---------- */
+.site-header {
+  background: linear-gradient(90deg, var(--primary), #1e6bff);
+  color: white;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px; /* padding inside header (space between content and header border) */
+}
+
+#site-title {
+  font-size: 1.4rem;
+  letter-spacing: 0.4px;
+}
+
+/* Navigation links: demonstrates class selector and inline-block spacing */
+.main-nav .nav-link {
+  color: rgba(255,255,255,0.95);
+  text-decoration: none;
+  margin-left: 18px; /* space between links (margin = outside the element border) */
+  padding: 8px 10px;  /* padding = inside the link area */
+  border-radius: 6px;
+  display: inline-block;
+  font-size: 0.95rem;
+}
+
+.main-nav .nav-link:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 36px 24px; /* lots of padding to show internal space */
+  margin-top: 18px;   /* margin outside hero */
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+  border-radius: 10px;
+  border: 1px solid rgba(17,24,39,0.04);
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+}
+
+.hero .lead {
+  color: var(--muted);
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 16px; /* padding = internal click area */
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ---------- Info section ---------- */
+.info {
+  margin-top: 26px; /* margin separates this block from previous block */
+  padding: 20px;
+  background: transparent;
+}
+
+/* ---------- Cards Section ---------- */
+.cards-section {
+  margin-top: 28px;
+}
+
+.cards {
+  display: flex;
+  gap: 16px; /* gap is modern way to space flex items (acts like margin between cards) */
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+/* Each card demonstrates border, padding, and margin implicitly via gap */
+.card {
+  background: var(--card-bg);
+  border: 2px solid rgba(16,24,40,0.06); /* visible border to show box boundary */
+  border-radius: 8px;
+  padding: 18px;  /* padding: space inside the border */
+  width: calc(33.333% - 10.666px); /* three-column layout adjusted for gap */
+  min-width: 220px;
+  box-shadow: 0 6px 10px rgba(16,24,40,0.04);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+/* Hover state to show visual change (not required but helps visualizing the card box) */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(16,24,40,0.08);
+}
+
+.card h4 {
+  margin-bottom: 8px; /* space below the heading inside card (margin inside card) */
+}
+
+.card p.meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+/* ---------- Contact & Footer ---------- */
+.contact {
+  margin-top: 28px;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.5), transparent);
+  border-radius: 8px;
+  border: 1px dashed rgba(17,24,39,0.04);
+}
+
+.site-footer {
+  margin-top: 30px;
+  padding: 18px;
+  background: #0f1724;
+  color: #d1d5db;
+}
+
+.site-footer p {
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* ---------- Responsive tweaks ---------- */
+@media (max-width: 820px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .cards {
+    gap: 12px;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
